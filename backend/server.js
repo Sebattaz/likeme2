@@ -1,5 +1,5 @@
 const express = require("express");
-const { getData, postData, addLike } = require("./consultas/consultas");
+const { getData, postData, addLike, deleteData } = require("./consultas/consultas");
 const app = express();
 const cors = require("cors");
 
@@ -22,4 +22,10 @@ app.put("/posts/like/:id", async (req, res) => {
     const {id} = req.params;
     await addLike(id);
     res.send("Like agregado");
+});
+
+app.delete("/posts/:id", async (req, res) =>{
+    const {id} = req.params;
+    await deleteData(id);
+    res.send("Post Eliminado");
 });

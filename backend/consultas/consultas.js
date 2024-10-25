@@ -29,6 +29,13 @@ const addLike = async(id)=>{
     return result.rows;
 }
 
+const deleteData = async (id)=>{
+    const consulta ="DELETE FROM posts WHERE id = $1"
+    const values = [id];
+    const result = await pool.query(consulta,values);
+    return result.rows;
+
+}
 
 
-module.exports = {getData, postData, addLike};
+module.exports = {getData, postData, addLike, deleteData};
